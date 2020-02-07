@@ -6,7 +6,9 @@
   "dependencies": {
     "puppeteer": "^2.0.0",
     "puppeteer-extra": "^3.1.9",
-    "puppeteer-extra-plugin-stealth": "^2.4.9"
+    "puppeteer-extra-plugin-stealth": "^2.4.9",
+    "unirest": "^0.6.0",
+    "whois-json": "^2.0.4"
   },
   "devDependencies": {},
   "scripts": {
