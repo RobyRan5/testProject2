@@ -46,8 +46,8 @@ puppeteer.launch({ headless: false }).then(async browser => {
 
     const page = await browser.newPage();
     await page.emulate(iPhonex);
-    var cat = 'Real+Estate';
-    var loc = 'Downtown%2C+Austin%2C+TX';
+    var cat = 'Hotels';
+    var loc = 'San+Antonio%2C+TX';
     var offset = 0
     for (var i = offset; i < 10; i += 10) {
         await page.goto(`https://m.yelp.com/search?find_desc=${cat}&find_loc=${loc}&start=${i}`);
