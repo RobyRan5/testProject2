@@ -42,14 +42,16 @@ function sleep(ms) {
 
 var results = [];
 
-puppeteer.launch({ headless: false }).then(async browser => {
+puppeteer.launch({ headless: true }).then(async browser => {
 
     const page = await browser.newPage();
     await page.emulate(iPhonex);
+    await page.evaluateOnNewDocument(() => eval($));
+
     var cat = 'Hotels';
     var loc = 'San+Antonio%2C+TX';
     var offset = 0
-    for (var i = offset; i < 10; i += 10) {
+    for (var i = offset; i < 100; i += 10) {
         await page.goto(`https://m.yelp.com/search?find_desc=${cat}&find_loc=${loc}&start=${i}`);
 
 
@@ -64,8 +66,7 @@ puppeteer.launch({ headless: false }).then(async browser => {
 
         for (let i = 0; i < urls.length; i++) {
             await page.goto(`https://m.yelp.com${urls[i]}`);
-            await page.evaluate(() => eval($));
-            await sleep(500);
+            await page.addScriptTag({url: 'https://code.jquery.com/jquery-3.2.1.min.js'})
                         
             const innerText3 = await page.evaluate(() => $("[href^='/biz_redir']" ).attr('href'));
             // console.log(innerText3);
